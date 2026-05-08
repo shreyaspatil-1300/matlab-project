@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>PCCOE | Maxima Minima Visualizer | Quiz+Feedback</title>
+    <title>PCCOE | Maxima Minima Visualizer | Complete Theory</title>
     <!-- Plotly.js -->
     <script src="https://cdn.plot.ly/plotly-3.0.0.min.js" charset="utf-8"></script>
     <!-- Math.js -->
@@ -157,6 +157,34 @@
             font-weight: 600;
             font-family: 'Times New Roman', Times, serif;
         }
+        h4 {
+            font-size: 1.1rem;
+            margin: 0.8rem 0 0.4rem;
+            color: #334155;
+            font-weight: 600;
+        }
+        .theory-content {
+            line-height: 1.5;
+            font-size: 1rem;
+        }
+        .theory-content p {
+            margin-bottom: 0.7rem;
+        }
+        .theory-content ul, .theory-content ol {
+            margin-left: 1.8rem;
+            margin-bottom: 0.8rem;
+        }
+        .theory-content table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            background: #f8fafc;
+        }
+        .theory-content th, .theory-content td {
+            border: 1px solid #cbd5e1;
+            padding: 0.4rem 0.6rem;
+            text-align: left;
+        }
         .grid-2col {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
@@ -215,7 +243,6 @@
         .min-point { border-left: 4px solid #10b981; background: #ecfdf5; color:#065f46; }
         .saddle-point { border-left: 4px solid #f59e0b; background: #fffbeb; color:#b45309; }
 
-        /* quiz & feedback custom */
         .quiz-question {
             background: #f9f9ff;
             border-radius: 1.2rem;
@@ -314,25 +341,92 @@
         <button class="tab-btn" data-panel="feedback"><i class="fas fa-comment-dots"></i> Feedback</button>
     </div>
 
-    <!-- HOME PANEL -->
+    <!-- ===================== HOME PANEL - COMPLETE THEORY ===================== -->
     <div id="home-panel" class="panel active-panel">
         <div class="card">
-            <h2><i class="fas fa-graduation-cap"></i> Maxima, Minima & Saddle Points</h2>
-            <p style="font-size:1.05rem;">Multivariable calculus: Learn to classify critical points using second derivative test.</p>
-            <div class="grid-2col">
-                <div style="background:#fefce8; border-radius:1.5rem; padding:1rem;">
-                    <h3><i class="fas fa-mountain"></i> Maximum</h3>
-                    <p>Local max: f(x,y) ≤ f(a,b) nearby. Condition: D>0 and f_xx<0.</p>
-                    <h3><i class="fas fa-arrow-down"></i> Minimum</h3>
-                    <p>Local min: f(x,y) ≥ f(a,b). Condition: D>0 and f_xx>0.</p>
-                </div>
-                <div style="background:#ecfdf5; border-radius:1.5rem; padding:1rem;">
-                    <h3><i class="fas fa-exchange-alt"></i> Saddle Point</h3>
-                    <p>Critical point with D<0 → neither max nor min.</p>
-                    <h3><i class="fas fa-square-root-alt"></i> Second Derivative Test</h3>
-                    <p>r = f_xx, s = f_xy, t = f_yy, D = rt - s².<br>
-                    D>0 & r>0 → min ; D>0 & r<0 → max ; D<0 → saddle ; D=0 → inconclusive.</p>
-                </div>
+            <h2><i class="fas fa-book-open"></i> Maxima and Minima – Complete Theory</h2>
+            <div class="theory-content">
+                <h3>Introduction</h3>
+                <p>Maxima and Minima is an important topic in Differential Calculus that deals with finding the greatest and smallest values of a function. These concepts are widely used in mathematics, physics, engineering, economics, optimization problems, and real-life applications.</p>
+                <ul><li><strong>Maximum Value</strong> → The highest value attained by a function.</li><li><strong>Minimum Value</strong> → The lowest value attained by a function.</li></ul>
+                <p>The process of finding maxima and minima is called <strong>Optimization</strong>.</p>
+
+                <h3>1. Basic Definitions</h3>
+                <p>Consider a function y = f(x).</p>
+                <h4>1.1 Local Maximum</h4>
+                <p>f(x) has a local maximum at x=a if f(a) > f(x) for all values of x near a. The graph rises before the point and falls after.</p>
+                <h4>1.2 Local Minimum</h4>
+                <p>f(x) has a local minimum at x=a if f(a) < f(x) for all nearby x. The graph falls before and rises after.</p>
+                <h4>1.3 Absolute (Global) Maximum</h4>
+                <p>The largest value of the function over its entire domain.</p>
+                <h4>1.4 Absolute (Global) Minimum</h4>
+                <p>The smallest value of the function over its entire domain.</p>
+
+                <h3>2. Critical Points</h3>
+                <p>x = a is a critical point if f'(a)=0 or f'(a) does not exist. Critical points are possible locations of maxima or minima.</p>
+
+                <h3>3. Necessary Condition for Maxima/Minima</h3>
+                <p>If a differentiable function f(x) has a maximum or minimum at x=a, then f'(a)=0. The tangent is horizontal.</p>
+
+                <h3>4. Increasing and Decreasing Functions</h3>
+                <p>Increasing: f'(x) > 0 (positive slope). Decreasing: f'(x) < 0 (negative slope).</p>
+
+                <h3>5. First Derivative Test</h3>
+                <p><strong>Procedure:</strong> Find f'(x), solve f'(x)=0, check sign of f'(x) on both sides.</p>
+                <table><tr><th>Sign change of f'(x)</th><th>Nature</th></tr><tr><td>+ → -</td><td>Local Maximum</td></tr><tr><td>- → +</td><td>Local Minimum</td></tr><tr><td>No change</td><td>Neither</td></tr></table>
+
+                <h3>6. Second Derivative Test</h3>
+                <p>Find f''(x). At critical point a: if f''(a)>0 → Minimum; f''(a)<0 → Maximum; f''(a)=0 → Test fails.</p>
+
+                <h3>7. Concavity</h3>
+                <p>f''(x) > 0 → concave upward (cup shape). f''(x) < 0 → concave downward (cap shape).</p>
+
+                <h3>8. Point of Inflection</h3>
+                <p>Where concavity changes: f''(x)=0 and sign changes.</p>
+
+                <h3>9. Stationary Points</h3>
+                <p>Points where f'(x)=0: stationary maximum, stationary minimum, stationary point of inflection.</p>
+
+                <h3>10. Non-Differentiable Points</h3>
+                <p>Extrema may occur where derivative does not exist, e.g., f(x)=|x| at x=0 (minimum).</p>
+
+                <h3>11. Absolute Extrema on Closed Intervals [a,b]</h3>
+                <p>Find critical points inside, evaluate f at critical points and endpoints, compare. Largest = absolute max, smallest = absolute min.</p>
+
+                <h3>12. Geometrical Interpretation</h3>
+                <p>At maxima/minima, tangent is horizontal: dy/dx = 0.</p>
+
+                <h3>13. Maxima and Minima for Functions of Two Variables</h3>
+                <p>For f(x,y), find partial derivatives f_x = 0, f_y = 0. Compute D = f_xx f_yy - (f_xy)².</p>
+                <table><tr><th>Condition</th><th>Nature</th></tr><tr><td>D>0, f_xx>0</td><td>Minimum</td></tr><tr><td>D>0, f_xx<0</td><td>Maximum</td></tr><tr><td>D<0</td><td>Saddle Point</td></tr><tr><td>D=0</td><td>Inconclusive</td></tr></table>
+
+                <h3>14. Optimization Problems</h3>
+                <p>Examples: max profit, min cost, max area, min distance. <strong>Procedure:</strong> draw figure, define variables, form equation, reduce to one variable, differentiate, set derivative zero, apply tests, state answer.</p>
+
+                <h3>15. Important Standard Results</h3>
+                <p>Quadratic f(x)=ax²+bx+c: vertex at x=-b/(2a). a>0 → minimum, a<0 → maximum. Polynomials: even degree generally have both max/min; odd degree may not.</p>
+
+                <h3>16. Important Formulas</h3>
+                <ul><li>Necessary condition: f'(x)=0</li><li>First derivative test: +→- max; -→+ min</li><li>Second derivative test: f''(x)>0 min, f''(x)<0 max</li></ul>
+
+                <h3>17. Common Mistakes</h3>
+                <ul><li>Forgetting to check critical points</li><li>Ignoring endpoints on closed intervals</li><li>Not checking sign changes</li><li>Forgetting points where derivative does not exist</li></ul>
+
+                <h3>18. Summary of Core Concepts</h3>
+                <p>First derivative tells increase/decrease; second derivative tells curvature. Slope zero → possible extrema. Increasing to decreasing → maximum. Decreasing to increasing → minimum.</p>
+
+                <h3>19. Step-by-Step Methods</h3>
+                <p><strong>First Derivative Test:</strong> find f'(x), solve f'(x)=0, check sign intervals, classify.</p>
+                <p><strong>Second Derivative Test:</strong> find f'(x)=0, compute f''(x), substitute critical points, classify.</p>
+
+                <h3>20. Example Problem</h3>
+                <p>f(x)=x³-3x²+2. f'(x)=3x²-6x=3x(x-2) → critical x=0,2. f''(x)=6x-6. f''(0)=-6<0 → maximum; f''(2)=6>0 → minimum. f(0)=2, f(2)=-2. Answer: Max value 2 at x=0, Min value -2 at x=2.</p>
+
+                <h3>21. Quick Revision Table</h3>
+                <table><tr><th>Concept</th><th>Condition</th></tr><tr><td>Critical Point</td><td>f'(x)=0</td></tr><tr><td>Increasing</td><td>f'(x)>0</td></tr><tr><td>Decreasing</td><td>f'(x)<0</td></tr><tr><td>Maximum (1st derivative)</td><td>+ → -</td></tr><tr><td>Minimum (1st derivative)</td><td>- → +</td></tr><tr><td>Concave Up</td><td>f''(x)>0</td></tr><tr><td>Concave Down</td><td>f''(x)<0</td></tr><tr><td>Inflection</td><td>f''(x)=0 with sign change</td></tr></table>
+
+                <h3>22. Conclusion</h3>
+                <p>The theory of maxima and minima is fundamentally based on derivatives and function behavior. The first derivative determines increase/decrease, the second derivative gives curvature. These concepts enable solving optimization problems and analyzing functions in mathematics and applied sciences.</p>
             </div>
         </div>
     </div>
@@ -490,7 +584,7 @@
         document.getElementById("analysisSummary").innerHTML = summary;
         let table = `<table style="width:100%; border-collapse:collapse;"><tr style="background:#eef2ff;"><th>Point</th><th>r</th><th>s</th><th>t</th><th>D</th><th>Type</th></tr>`;
         points.forEach(p=>{ table+=`<tr><td>(${p.x.toFixed(3)},${p.y.toFixed(3)})</td><td>${p.r.toFixed(4)}</td><td>${p.s.toFixed(4)}</td><td>${p.t.toFixed(4)}</td><td>${p.D.toFixed(4)}</td><td>${p.type}</td></tr>`; });
-        table+=`</table>`;
+        table+=`</td>`;
         document.getElementById("detailedTable").innerHTML = points.length?table:"No data";
     }
     function updateContourPlot(funcStr, points) {
@@ -512,7 +606,7 @@
         Plotly.newPlot('surface3d', [surf, ...markers], layout, {responsive:true});
     }
 
-    // ----------------------------- 20 QUIZ QUESTIONS + SOLUTIONS -----------------------------
+    // 20 QUIZ QUESTIONS (same as before)
     const quizQuestions = [
         { q: "What is a necessary condition for (a,b) to be a critical point of f(x,y)?", options: ["f_x=0 and f_y=0", "f_xx=0", "f_xy=0", "f=0"], correct: 0, solution: "Both first partial derivatives must be zero." },
         { q: "If D > 0 and f_xx > 0 at a critical point, it is a:", options: ["Local maximum", "Local minimum", "Saddle point", "Inconclusive"], correct: 1, solution: "D>0 and f_xx>0 indicates local minimum." },
@@ -529,7 +623,7 @@
         { q: "If D < 0, the point is definitely a:", options: ["Maximum", "Minimum", "Saddle", "Inconclusive"], correct: 2, solution: "Negative discriminant implies saddle." },
         { q: "Partial derivatives being zero at a point guarantee it's a local extremum?", options: ["Yes always", "No, could be saddle"], correct: 1, solution: "Not always; e.g., saddle also has zero gradient." },
         { q: "Which term represents f_xy in the Hessian matrix?", options: ["Off-diagonal", "Diagonal", "Determinant", "Trace"], correct: 0, solution: "f_xy is the mixed partial off-diagonal." },
-        { q: "For a function f(x,y)=x³ - 3xy², the point (0,0) is:", options: ["Max", "Min", "Saddle", "Inconclusive"], correct: 2, solution: "f_xx=0, f_yy=0, f_xy=-6y? at (0,0) D=0? Actually compute: f_xx=6x; at (0,0) r=0, t=0, s=-6*0? Wait derivative yields D=0? Historically (0,0) is saddle due to cubic behavior." },
+        { q: "For a function f(x,y)=x³ - 3xy², the point (0,0) is:", options: ["Max", "Min", "Saddle", "Inconclusive"], correct: 2, solution: "Classic saddle point at origin." },
         { q: "The Hessian matrix is composed of:", options: ["First derivatives", "Second partial derivatives", "Gradient", "Jacobian"], correct: 1, solution: "Hessian contains second-order partials." },
         { q: "If f_xx > 0 and D > 0, the critical point is a:", options: ["Maximum", "Minimum", "Saddle", "Inconclusive"], correct: 1, solution: "D>0 and f_xx>0 → local min." },
         { q: "If f_xx < 0 and D > 0, the point is a:", options: ["Minimum", "Maximum", "Saddle", "Inflection"], correct: 1, solution: "D>0 and f_xx<0 → local max." },
@@ -551,12 +645,10 @@
 
     function evaluateQuiz() {
         let score = 0;
-        let resultsHtml = `<div class="quiz-score"><i class="fas fa-chart-simple"></i> Score: `;
         for(let i=0; i<quizQuestions.length; i++) {
             let selected = document.querySelector(`input[name="q${i}"]:checked`);
             let isCorrect = selected && parseInt(selected.value) === quizQuestions[i].correct;
             if(isCorrect) score++;
-            let correctnessSpan = isCorrect ? "✅ Correct" : "❌ Incorrect";
             let solutionDiv = document.getElementById(`sol${i}`);
             if(!isCorrect) {
                 solutionDiv.style.display = "block";
@@ -566,7 +658,6 @@
                 solutionDiv.style.display = "none";
                 solutionDiv.innerHTML = "";
             }
-            // optional per-question feedback show inline? We'll add a brief status
             let qDiv = document.getElementById(`q${i}`);
             let existingStatus = qDiv.querySelector(".q-status");
             if(existingStatus) existingStatus.remove();
@@ -577,8 +668,7 @@
             statusSpan.style.color = isCorrect ? "#15803d" : "#b91c1c";
             qDiv.appendChild(statusSpan);
         }
-        resultsHtml += `${score} / ${quizQuestions.length}</div>`;
-        document.getElementById("quizResult").innerHTML = resultsHtml + `<p>${score===20?"Excellent mastery!": "Review incorrect answers and learn from solutions."}</p>`;
+        document.getElementById("quizResult").innerHTML = `<div class="quiz-score">Score: ${score} / ${quizQuestions.length}</div><p>${score===20?"Excellent mastery!": "Review incorrect answers and learn from solutions."}</p>`;
     }
 
     window.toggleSolution = function(idx) {
@@ -587,10 +677,8 @@
         else detail.style.display = "none";
     };
 
-    // Feedback handler
     document.getElementById("submitFeedback")?.addEventListener("click", function() {
         let name = document.getElementById("feedbackName").value || "Anonymous";
-        let email = document.getElementById("feedbackEmail").value;
         let msg = document.getElementById("feedbackMessage").value;
         if(!msg.trim()) { document.getElementById("feedbackStatus").innerHTML = "<span style='color:#b91c1c;'>Please enter a message.</span>"; return; }
         document.getElementById("feedbackStatus").innerHTML = "<span style='color:#2d6a4f;'><i class='fas fa-check-circle'></i> Thank you for your feedback, " + name + "! We'll review it.</span>";
@@ -600,7 +688,6 @@
         setTimeout(()=>{ document.getElementById("feedbackStatus").innerHTML = ""; }, 4000);
     });
 
-    // Event listeners & initialization
     document.getElementById("computeBtn").addEventListener("click", computeAll);
     document.getElementById("submitQuiz").addEventListener("click", evaluateQuiz);
     const tabs = document.querySelectorAll(".tab-btn");
@@ -613,8 +700,6 @@
             tabs.forEach(b => b.classList.remove("active"));
             btn.classList.add("active");
             if(target === "quiz") buildQuiz();
-            if(target === "function" && criticalPoints.length) updateContourPlot(currentFuncStr, criticalPoints);
-            if(target === "visuals" && criticalPoints.length) update3DSurface(currentFuncStr, criticalPoints);
         });
     });
     setTimeout(() => { computeAll(); buildQuiz(); }, 100);
