@@ -323,6 +323,7 @@
 <div class="container">
     <div class="college-header">
         <div class="college-title">
+            <!-- Added the PCCOE Logo before the college name -->
             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/PCCOE-Logo-24.png/320px-PCCOE-Logo-24.png" alt="PCCOE Logo" 
                  onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/9/9c/PCCOE-Logo-24.png'">
             <h1>Pimpri Chinchwad College of Engineering</h1>
@@ -344,7 +345,7 @@
     <!-- ===================== HOME PANEL - COMPLETE THEORY ===================== -->
     <div id="home-panel" class="panel active-panel">
         <div class="card">
-            <h2><i class="fas fa-book-open"></i> Maxima and Minima</h2>
+            <h2><i class="fas fa-book-open"></i> Maxima and Minima – Complete Theory</h2>
             <div class="theory-content">
                 <h3>Introduction</h3>
                 <p>Maxima and Minima is an important topic in Differential Calculus that deals with finding the greatest and smallest values of a function. These concepts are widely used in mathematics, physics, engineering, economics, optimization problems, and real-life applications.</p>
@@ -373,7 +374,12 @@
 
                 <h3>5. First Derivative Test</h3>
                 <p><strong>Procedure:</strong> Find f'(x), solve f'(x)=0, check sign of f'(x) on both sides.</p>
-                <table><tr><th>Sign change of f'(x)</th><th>Nature</th></tr><tr><td>+ → -</td><td>Local Maximum</td></tr><tr><td>- → +</td><td>Local Minimum</td></tr><tr><td>No change</td><td>Neither</td></tr></table>
+                <table>
+                    <tr><th>Sign change of f'(x)</th><th>Nature</th></tr>
+                    <tr><td>+ → -</td><td>Local Maximum</td></tr>
+                    <tr><td>- → +</td><td>Local Minimum</td></tr>
+                    <tr><td>No change</td><td>Neither</td></tr>
+                </table>
 
                 <h3>6. Second Derivative Test</h3>
                 <p>Find f''(x). At critical point a: if f''(a)>0 → Minimum; f''(a)<0 → Maximum; f''(a)=0 → Test fails.</p>
@@ -398,7 +404,13 @@
 
                 <h3>13. Maxima and Minima for Functions of Two Variables</h3>
                 <p>For f(x,y), find partial derivatives f_x = 0, f_y = 0. Compute D = f_xx f_yy - (f_xy)².</p>
-                <table><tr><th>Condition</th><th>Nature</th></tr><tr><td>D>0, f_xx>0</td><td>Minimum</td></tr><tr><td>D>0, f_xx<0</td><td>Maximum</td></tr><tr><td>D<0</td><td>Saddle Point</td></tr><tr><td>D=0</td><td>Inconclusive</td></tr></table>
+                <table>
+                    <tr><th>Condition</th><th>Nature</th></tr>
+                    <tr><td>D>0, f_xx>0</td><td>Minimum</td></tr>
+                    <tr><td>D>0, f_xx<0</td><td>Maximum</td></tr>
+                    <tr><td>D<0</td><td>Saddle Point</td></tr>
+                    <tr><td>D=0</td><td>Inconclusive</td></tr>
+                </table>
 
                 <h3>14. Optimization Problems</h3>
                 <p>Examples: max profit, min cost, max area, min distance. <strong>Procedure:</strong> draw figure, define variables, form equation, reduce to one variable, differentiate, set derivative zero, apply tests, state answer.</p>
@@ -423,7 +435,17 @@
                 <p>f(x)=x³-3x²+2. f'(x)=3x²-6x=3x(x-2) → critical x=0,2. f''(x)=6x-6. f''(0)=-6<0 → maximum; f''(2)=6>0 → minimum. f(0)=2, f(2)=-2. Answer: Max value 2 at x=0, Min value -2 at x=2.</p>
 
                 <h3>21. Quick Revision Table</h3>
-                <table><tr><th>Concept</th><th>Condition</th></tr><tr><td>Critical Point</td><td>f'(x)=0</td></tr><tr><td>Increasing</td><td>f'(x)>0</td></tr><tr><td>Decreasing</td><td>f'(x)<0</td></tr><tr><td>Maximum (1st derivative)</td><td>+ → -</td></tr><tr><td>Minimum (1st derivative)</td><td>- → +</td></tr><tr><td>Concave Up</td><td>f''(x)>0</td></tr><tr><td>Concave Down</td><td>f''(x)<0</td></tr><tr><td>Inflection</td><td>f''(x)=0 with sign change</td></tr></table>
+                <table>
+                    <tr><th>Concept</th><th>Condition</th></tr>
+                    <tr><td>Critical Point</td><td>f'(x)=0</td></tr>
+                    <tr><td>Increasing</td><td>f'(x)>0</td></tr>
+                    <tr><td>Decreasing</td><td>f'(x)<0</td></tr>
+                    <tr><td>Maximum (1st derivative)</td><td>+ → -</td></tr>
+                    <tr><td>Minimum (1st derivative)</td><td>- → +</td></tr>
+                    <tr><td>Concave Up</td><td>f''(x)>0</td></tr>
+                    <tr><td>Concave Down</td><td>f''(x)<0</td></tr>
+                    <tr><td>Inflection</td><td>f''(x)=0 with sign change</td></tr>
+                </table>
 
                 <h3>22. Conclusion</h3>
                 <p>The theory of maxima and minima is fundamentally based on derivatives and function behavior. The first derivative determines increase/decrease, the second derivative gives curvature. These concepts enable solving optimization problems and analyzing functions in mathematics and applied sciences.</p>
@@ -584,7 +606,7 @@
         document.getElementById("analysisSummary").innerHTML = summary;
         let table = `<table style="width:100%; border-collapse:collapse;"><tr style="background:#eef2ff;"><th>Point</th><th>r</th><th>s</th><th>t</th><th>D</th><th>Type</th></tr>`;
         points.forEach(p=>{ table+=`<tr><td>(${p.x.toFixed(3)},${p.y.toFixed(3)})</td><td>${p.r.toFixed(4)}</td><td>${p.s.toFixed(4)}</td><td>${p.t.toFixed(4)}</td><td>${p.D.toFixed(4)}</td><td>${p.type}</td></tr>`; });
-        table+=`</td>`;
+        table+=`</table>`;
         document.getElementById("detailedTable").innerHTML = points.length?table:"No data";
     }
     function updateContourPlot(funcStr, points) {
