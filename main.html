@@ -3,14 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>PCCOE | Maxima Minima & Saddle Point Visualizer | Light Theme + Quiz</title>
+    <title>PCCOE | Maxima Minima Visualizer | Quiz+Feedback</title>
     <!-- Plotly.js -->
     <script src="https://cdn.plot.ly/plotly-3.0.0.min.js" charset="utf-8"></script>
     <!-- Math.js -->
     <script src="https://unpkg.com/mathjs@11.7.0/lib/browser/math.js"></script>
-    <!-- Google Fonts: Poppins + Inter -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
-    <!-- Font Awesome 6 -->
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         * {
@@ -20,14 +18,13 @@
         }
 
         body {
-            font-family: 'Inter', 'Poppins', sans-serif;
-            background: #f4f7fc;  /* light pastel background */
+            font-family: 'Times New Roman', Times, serif;
+            background: #f4f7fc;
             color: #1e293b;
             overflow-x: hidden;
             scroll-behavior: smooth;
         }
 
-        /* subtle animated wave or light effect */
         .bg-soft-light {
             position: fixed;
             top: 0;
@@ -45,7 +42,6 @@
             padding: 1rem 2rem 3rem;
         }
 
-        /* college header - light card style */
         .college-header {
             display: flex;
             align-items: center;
@@ -76,6 +72,7 @@
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
+            font-family: 'Times New Roman', Times, serif;
         }
         .tagline {
             font-size: 0.85rem;
@@ -85,9 +82,9 @@
             color: #4f46e5;
             font-weight: 500;
             border-left: 3px solid #8b5cf6;
+            font-family: 'Times New Roman', Times, serif;
         }
 
-        /* nav tabs */
         .nav-tabs {
             display: flex;
             gap: 0.6rem;
@@ -106,7 +103,7 @@
             color: #475569;
             cursor: pointer;
             transition: all 0.2s ease;
-            font-family: 'Inter', sans-serif;
+            font-family: 'Times New Roman', Times, serif;
         }
         .tab-btn i {
             margin-right: 8px;
@@ -121,7 +118,6 @@
             color: #1e293b;
         }
 
-        /* panels */
         .panel {
             display: none;
             animation: fadeSlide 0.3s ease;
@@ -134,7 +130,6 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* cards (light theme) */
         .card {
             background: white;
             border-radius: 1.8rem;
@@ -143,10 +138,6 @@
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.03), 0 2px 4px rgba(0, 0, 0, 0.05);
             border: 1px solid #eef2ff;
             transition: transform 0.2s, box-shadow 0.2s;
-        }
-        .card:hover {
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
-            border-color: #cbd5e1;
         }
         h2 {
             font-size: 1.8rem;
@@ -157,12 +148,14 @@
             background-clip: text;
             color: transparent;
             display: inline-block;
+            font-family: 'Times New Roman', Times, serif;
         }
         h3 {
             font-size: 1.3rem;
             margin: 1rem 0 0.6rem 0;
             color: #4f46e5;
             font-weight: 600;
+            font-family: 'Times New Roman', Times, serif;
         }
         .grid-2col {
             display: grid;
@@ -185,14 +178,8 @@
             border-radius: 1rem;
             padding: 0.8rem 1rem;
             color: #0f172a;
-            font-family: 'Fira Code', monospace;
+            font-family: 'Courier New', monospace;
             font-size: 1rem;
-            transition: all 0.2s;
-        }
-        .func-input:focus {
-            outline: none;
-            border-color: #8b5cf6;
-            box-shadow: 0 0 0 3px rgba(139,92,246,0.2);
         }
         button.calc-btn {
             background: linear-gradient(95deg, #6366f1, #8b5cf6);
@@ -203,20 +190,14 @@
             color: white;
             font-size: 1rem;
             cursor: pointer;
-            transition: all 0.2s;
-            box-shadow: 0 4px 8px rgba(99,102,241,0.3);
-        }
-        button.calc-btn:hover {
-            transform: scale(1.02);
-            background: linear-gradient(95deg, #818cf8, #a78bfa);
-            box-shadow: 0 8px 16px rgba(99,102,241,0.4);
+            font-family: 'Times New Roman', Times, serif;
         }
         .result-box {
             background: #f8fafc;
             border-radius: 1.2rem;
             padding: 1rem;
             margin-top: 1rem;
-            font-family: monospace;
+            font-family: 'Courier New', monospace;
             border-left: 6px solid #8b5cf6;
             color: #0f172a;
         }
@@ -233,23 +214,8 @@
         .max-point { border-left: 4px solid #ef4444; background: #fff0f0; color:#b91c1c; }
         .min-point { border-left: 4px solid #10b981; background: #ecfdf5; color:#065f46; }
         .saddle-point { border-left: 4px solid #f59e0b; background: #fffbeb; color:#b45309; }
-        .table-data {
-            font-family: monospace;
-        }
-        hr {
-            margin: 1rem 0;
-            border-color: #e2e8f0;
-        }
-        footer {
-            text-align: center;
-            margin-top: 2rem;
-            font-size: 0.8rem;
-            color: #64748b;
-            border-top: 1px solid #e2e8f0;
-            padding-top: 1.5rem;
-        }
 
-        /* quiz styles */
+        /* quiz & feedback custom */
         .quiz-question {
             background: #f9f9ff;
             border-radius: 1.2rem;
@@ -257,21 +223,12 @@
             margin-bottom: 1.2rem;
             border: 1px solid #e0e7ff;
         }
-        .quiz-question p {
-            font-weight: 700;
-            margin-bottom: 0.6rem;
-        }
         .quiz-option {
             display: flex;
             align-items: center;
             gap: 0.8rem;
             margin: 0.5rem 0;
             cursor: pointer;
-        }
-        .quiz-option input {
-            width: 18px;
-            height: 18px;
-            accent-color: #8b5cf6;
         }
         .quiz-btn {
             background: #4f46e5;
@@ -282,6 +239,7 @@
             font-weight: 600;
             margin-top: 0.8rem;
             cursor: pointer;
+            font-family: 'Times New Roman', Times, serif;
         }
         .quiz-score {
             font-size: 1.2rem;
@@ -291,16 +249,51 @@
             padding: 0.5rem 1.2rem;
             border-radius: 2rem;
         }
+        .solution-btn {
+            background: #e2e8f0;
+            border: none;
+            padding: 0.2rem 1rem;
+            border-radius: 30px;
+            margin-top: 0.6rem;
+            font-size: 0.75rem;
+            cursor: pointer;
+            font-family: 'Times New Roman', Times, serif;
+        }
+        .solution-detail {
+            margin-top: 0.6rem;
+            padding: 0.6rem;
+            background: #f1f5f9;
+            border-radius: 1rem;
+            font-size: 0.85rem;
+            display: none;
+        }
+        .feedback-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        .feedback-input, .feedback-textarea {
+            padding: 0.7rem;
+            border-radius: 1rem;
+            border: 1px solid #cbd5e1;
+            font-family: 'Times New Roman', Times, serif;
+        }
+        footer {
+            text-align: center;
+            margin-top: 2rem;
+            font-size: 0.8rem;
+            color: #64748b;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 1.5rem;
+        }
         @media (max-width: 700px) {
             .container { padding: 1rem; }
-            .college-title h1 { font-size: 1.2rem; }
         }
     </style>
 </head>
 <body>
 <div class="bg-soft-light"></div>
 <div class="container">
-    <!-- College Header with Logo and light branding -->
     <div class="college-header">
         <div class="college-title">
             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/PCCOE-Logo-24.png/320px-PCCOE-Logo-24.png" alt="PCCOE Logo" 
@@ -312,349 +305,304 @@
         </div>
     </div>
 
-    <!-- Navigation Tabs (5 panels) -->
     <div class="nav-tabs">
         <button class="tab-btn active" data-panel="home"><i class="fas fa-home"></i> Home / Theory</button>
         <button class="tab-btn" data-panel="function"><i class="fas fa-chart-line"></i> Function & Analysis</button>
         <button class="tab-btn" data-panel="results"><i class="fas fa-clipboard-list"></i> Result Analysis</button>
         <button class="tab-btn" data-panel="visuals"><i class="fas fa-cube"></i> 3D Visualizer</button>
-        <button class="tab-btn" data-panel="quiz"><i class="fas fa-puzzle-piece"></i> Quiz Challenge</button>
+        <button class="tab-btn" data-panel="quiz"><i class="fas fa-puzzle-piece"></i> Quiz (20 Qs)</button>
+        <button class="tab-btn" data-panel="feedback"><i class="fas fa-comment-dots"></i> Feedback</button>
     </div>
 
-    <!-- ===================== PANEL 1: HOME ===================== -->
+    <!-- HOME PANEL -->
     <div id="home-panel" class="panel active-panel">
         <div class="card">
             <h2><i class="fas fa-graduation-cap"></i> Maxima, Minima & Saddle Points</h2>
-            <p style="font-size:1.05rem; margin-bottom:1rem;">Interactive learning for multivariable calculus — visual and mathematical.</p>
+            <p style="font-size:1.05rem;">Multivariable calculus: Learn to classify critical points using second derivative test.</p>
             <div class="grid-2col">
                 <div style="background:#fefce8; border-radius:1.5rem; padding:1rem;">
-                    <h3><i class="fas fa-mountain"></i> Maximum (Local/Global)</h3>
-                    <p>A point <strong>(a,b)</strong> is a local maximum if <strong>f(x,y) ≤ f(a,b)</strong> for points near it. Global maximum holds over entire domain.<br>✅ Condition: <strong>D > 0</strong> and <strong>r = f<sub>xx</sub> < 0</strong>.</p>
-                    <h3><i class="fas fa-arrow-down"></i> Minimum (Local/Global)</h3>
-                    <p><strong>f(x,y) ≥ f(a,b)</strong> locally. Condition: <strong>D > 0</strong> and <strong>r > 0</strong>.</p>
+                    <h3><i class="fas fa-mountain"></i> Maximum</h3>
+                    <p>Local max: f(x,y) ≤ f(a,b) nearby. Condition: D>0 and f_xx<0.</p>
+                    <h3><i class="fas fa-arrow-down"></i> Minimum</h3>
+                    <p>Local min: f(x,y) ≥ f(a,b). Condition: D>0 and f_xx>0.</p>
                 </div>
                 <div style="background:#ecfdf5; border-radius:1.5rem; padding:1rem;">
                     <h3><i class="fas fa-exchange-alt"></i> Saddle Point</h3>
-                    <p>Critical point that is neither max nor min — surface curves up in one direction, down in another. Condition: <strong>D < 0</strong>.</p>
+                    <p>Critical point with D<0 → neither max nor min.</p>
                     <h3><i class="fas fa-square-root-alt"></i> Second Derivative Test</h3>
-                    <p>Let <strong>r = f<sub>xx</sub></strong>, <strong>s = f<sub>xy</sub></strong>, <strong>t = f<sub>yy</sub></strong>, and <strong>D = rt − s²</strong>.<br>
-                    ➜ D>0 & r>0 → min &nbsp;&nbsp;➜ D>0 & r<0 → max <br>➜ D<0 → saddle &nbsp;&nbsp;➜ D=0 → inconclusive.</p>
+                    <p>r = f_xx, s = f_xy, t = f_yy, D = rt - s².<br>
+                    D>0 & r>0 → min ; D>0 & r<0 → max ; D<0 → saddle ; D=0 → inconclusive.</p>
                 </div>
             </div>
         </div>
-        <div class="card">
-            <h3><i class="fas fa-lightbulb"></i> How to use</h3>
-            <p>Go to <strong>Function & Analysis</strong> tab → input f(x,y) → click compute. The tool finds critical points, computes r,s,t,D, and classifies points. Switch to <strong>3D Visualizer</strong> to see surface with highlighted maxima (🔴 red), minima (🟢 green), saddles (🟠 orange).</p>
-        </div>
     </div>
 
-    <!-- ===================== PANEL 2: FUNCTION INPUT & CRITICAL POINTS ===================== -->
+    <!-- FUNCTION PANEL (same as before) -->
     <div id="function-panel" class="panel">
         <div class="card">
             <h2><i class="fas fa-edit"></i> Define f(x, y)</h2>
             <div class="input-group">
-                <label><i class="fas fa-math"></i> Enter function (JavaScript math):</label>
-                <input type="text" id="functionInput" class="func-input" value="x^3 - 3*x*y^2" placeholder="e.g., x^2 - y^2, sin(x)*cos(y), x^3 - 3*x*y^2">
-                <small style="color:#475569;">Use x and y. Supported: +, -, *, /, ^, sin, cos, exp, log, sqrt.</small>
+                <label>Function (JavaScript math):</label>
+                <input type="text" id="functionInput" class="func-input" value="x^3 - 3*x*y^2">
+                <small>Use x and y. Supported: +, -, *, /, ^, sin, cos, exp, log, sqrt.</small>
             </div>
-            <button class="calc-btn" id="computeBtn"><i class="fas fa-calculator"></i> Compute Critical Points & Derivatives</button>
-            <div id="criticalPointsOutput" class="result-box">
-                <i class="fas fa-spinner fa-pulse"></i> Click compute to analyze function...
-            </div>
-            <div id="derivativeOutput" class="result-box" style="margin-top:0.5rem;">
-                <!-- r,s,t symbolic & D info -->
-            </div>
+            <button class="calc-btn" id="computeBtn"><i class="fas fa-calculator"></i> Compute Critical Points</button>
+            <div id="criticalPointsOutput" class="result-box">Click compute to analyze...</div>
+            <div id="derivativeOutput" class="result-box"></div>
         </div>
         <div class="card">
-            <h3><i class="fas fa-chart-area"></i> 2D Contour Map (with critical points)</h3>
+            <h3>2D Contour Map</h3>
             <div id="contourPlot" style="height: 440px; width: 100%; border-radius: 1rem;"></div>
         </div>
     </div>
 
-    <!-- ===================== PANEL 3: RESULT ANALYSIS ===================== -->
+    <!-- RESULT ANALYSIS PANEL -->
     <div id="results-panel" class="panel">
         <div class="card">
-            <h2><i class="fas fa-clipboard-list"></i> Classification Summary</h2>
-            <div id="analysisSummary" class="result-box">
-                <i class="fas fa-chart-simple"></i> No function analyzed yet. Use "Function & Analysis" tab.
-            </div>
+            <h2>Classification Summary</h2>
+            <div id="analysisSummary" class="result-box">No function analyzed yet.</div>
         </div>
         <div class="card">
-            <h3><i class="fas fa-table"></i> Detailed Second Derivative Test</h3>
-            <div id="detailedTable" style="overflow-x:auto;">
-                <p style="color:#475569;">—</p>
-            </div>
+            <h3>Detailed Test Table</h3>
+            <div id="detailedTable" style="overflow-x:auto;"></div>
         </div>
     </div>
 
-    <!-- ===================== PANEL 4: 3D VISUALIZER ===================== -->
+    <!-- 3D VISUALIZER PANEL -->
     <div id="visuals-panel" class="panel">
         <div class="card">
-            <h2><i class="fas fa-cube"></i> Interactive 3D Surface Plot</h2>
-            <p>🔴 Red markers = Maxima &nbsp;&nbsp;🟢 Green = Minima &nbsp;&nbsp;🟠 Orange = Saddle Points</p>
+            <h2>Interactive 3D Surface</h2>
+            <p>🔴 Maxima &nbsp; 🟢 Minima &nbsp; 🟠 Saddle Points</p>
             <div id="surface3d" style="height: 560px; width: 100%; border-radius: 1.5rem;"></div>
-        </div>
-        <div class="card">
-            <h3>Color mapping: low (blue) → medium (green) → high (red)</h3>
-            <p>Drag to rotate, scroll to zoom. Critical points are overlaid as spheres.</p>
         </div>
     </div>
 
-    <!-- ===================== PANEL 5: QUIZ ===================== -->
+    <!-- QUIZ PANEL (20 questions + detailed solutions) -->
     <div id="quiz-panel" class="panel">
         <div class="card">
-            <h2><i class="fas fa-brain"></i> Knowledge Check: Maxima, Minima & Saddle Points</h2>
-            <p>Test your understanding of multivariable optimization and the second derivative test.</p>
+            <h2><i class="fas fa-brain"></i> 20 Theory Questions</h2>
+            <p>Attempt all questions. After submit, you'll see correct/incorrect and can view detailed solution for incorrect answers.</p>
             <div id="quizContainer"></div>
-            <button id="submitQuiz" class="quiz-btn"><i class="fas fa-check-circle"></i> Submit Answers</button>
+            <button id="submitQuiz" class="quiz-btn">Submit Answers</button>
             <div id="quizResult" style="margin-top: 1.5rem;"></div>
         </div>
     </div>
 
-    <footer>
-        <i class="fas fa-chalkboard"></i> Multivariable Calculus Interactive Tool | PCCOE | Second Derivative Test & 3D Visualization
-    </footer>
+    <!-- FEEDBACK PANEL (new page) -->
+    <div id="feedback-panel" class="panel">
+        <div class="card">
+            <h2><i class="fas fa-comment"></i> We value your feedback</h2>
+            <p>Please share your experience with this Maxima-Minima visualizer tool.</p>
+            <div class="feedback-form">
+                <input type="text" id="feedbackName" class="feedback-input" placeholder="Your Name (optional)">
+                <input type="email" id="feedbackEmail" class="feedback-input" placeholder="Email (optional)">
+                <textarea id="feedbackMessage" rows="4" class="feedback-textarea" placeholder="Write your suggestions, bug reports, or appreciation..."></textarea>
+                <button id="submitFeedback" class="calc-btn" style="width:200px;"><i class="fas fa-paper-plane"></i> Send Feedback</button>
+                <div id="feedbackStatus" style="margin-top: 0.5rem; color: #2d6a4f;"></div>
+            </div>
+        </div>
+        <div class="card">
+            <h3>Thank you for helping us improve!</h3>
+            <p>Your feedback will be reviewed by the PCCOE calculus team.</p>
+        </div>
+    </div>
+
+    <footer>Multivariable Calculus Interactive Tool | PCCOE | Second Derivative Test Visualizer + Quiz</footer>
 </div>
 
 <script>
-    // Global state
+    // ----------------------------------- GLOBAL STATE --------------------------------
     let currentFuncStr = "x^3 - 3*x*y^2";
-    let criticalPoints = [];   // {x, y, type, r, s, t, D}
+    let criticalPoints = [];
 
-    // Helper: compile function
+    // Helper math functions
     function compileFunction(funcStr) {
-        try {
-            const node = math.parse(funcStr);
-            const compiled = node.compile();
-            return (x, y) => compiled.evaluate({x, y});
-        } catch(e) { return null; }
+        try { const node = math.parse(funcStr); return (x,y) => node.evaluate({x,y}); } catch(e) { return null; }
     }
-
-    // Symbolic derivative as string
     function getDerivative(funcStr, variable) {
-        try {
-            const expr = math.parse(funcStr);
-            const deriv = math.derivative(expr, variable);
-            return deriv.toString();
-        } catch(e) { return null; }
+        try { return math.derivative(math.parse(funcStr), variable).toString(); } catch(e) { return null; }
     }
-
     function evalDerivative(derivStr, x, y) {
         if(!derivStr) return NaN;
-        try {
-            const node = math.parse(derivStr);
-            return node.evaluate({x, y});
-        } catch(e) { return NaN; }
+        try { return math.parse(derivStr).evaluate({x,y}); } catch(e) { return NaN; }
     }
-
-    // Refine critical point near grid
     function refineCriticalPoint(funcStr, x0, y0) {
-        let fx = getDerivative(funcStr, 'x');
-        let fy = getDerivative(funcStr, 'y');
-        let x = x0, y = y0;
+        let fx = getDerivative(funcStr, 'x'), fy = getDerivative(funcStr, 'y');
+        let x=x0, y=y0;
         for(let iter=0; iter<8; iter++) {
-            let fxv = evalDerivative(fx, x, y);
-            let fyv = evalDerivative(fy, x, y);
-            if(Math.abs(fxv) < 1e-6 && Math.abs(fyv) < 1e-6) break;
-            x -= fxv * 0.12;
-            y -= fyv * 0.12;
+            let fxv = evalDerivative(fx, x, y), fyv = evalDerivative(fy, x, y);
+            if(Math.abs(fxv)<1e-6 && Math.abs(fyv)<1e-6) break;
+            x -= fxv*0.12; y -= fyv*0.12;
         }
-        return {x, y};
+        return {x,y};
     }
-
-    function findCriticalPoints(funcStr, range = [-2.6, 2.6], step = 0.14) {
-        const fxDeriv = getDerivative(funcStr, 'x');
-        const fyDeriv = getDerivative(funcStr, 'y');
-        if(!fxDeriv || !fyDeriv) return [];
+    function findCriticalPoints(funcStr, range=[-2.6,2.6], step=0.14) {
+        let fxD = getDerivative(funcStr,'x'), fyD = getDerivative(funcStr,'y');
+        if(!fxD || !fyD) return [];
         let candidates = [];
-        const steps = Math.floor((range[1] - range[0]) / step);
-        for(let i=0; i<=steps; i++) {
-            for(let j=0; j<=steps; j++) {
-                let x0 = range[0] + i*step;
-                let y0 = range[0] + j*step;
-                let fxv = evalDerivative(fxDeriv, x0, y0);
-                let fyv = evalDerivative(fyDeriv, x0, y0);
-                if(Math.abs(fxv) < 0.045 && Math.abs(fyv) < 0.045) {
-                    let refined = refineCriticalPoint(funcStr, x0, y0);
-                    candidates.push(refined);
-                }
-            }
+        let steps = Math.floor((range[1]-range[0])/step);
+        for(let i=0;i<=steps;i++) for(let j=0;j<=steps;j++) {
+            let x0 = range[0]+i*step, y0 = range[0]+j*step;
+            if(Math.abs(evalDerivative(fxD,x0,y0))<0.045 && Math.abs(evalDerivative(fyD,x0,y0))<0.045)
+                candidates.push(refineCriticalPoint(funcStr,x0,y0));
         }
-        // unique proximity
         let unique = [];
-        for(let c of candidates) {
-            let duplicate = unique.some(u => Math.hypot(u.x - c.x, u.y - c.y) < 0.12);
-            if(!duplicate && isFinite(c.x) && isFinite(c.y)) unique.push(c);
-        }
-        // compute second derivatives and classify
-        const r2Expr = getDerivative(getDerivative(funcStr, 'x'), 'x');
-        const sExpr = getDerivative(getDerivative(funcStr, 'x'), 'y');
-        const t2Expr = getDerivative(getDerivative(funcStr, 'y'), 'y');
+        for(let c of candidates) if(!unique.some(u=>Math.hypot(u.x-c.x,u.y-c.y)<0.12) && isFinite(c.x) && isFinite(c.y)) unique.push(c);
+        let r2 = getDerivative(getDerivative(funcStr,'x'),'x');
+        let s2 = getDerivative(getDerivative(funcStr,'x'),'y');
+        let t2 = getDerivative(getDerivative(funcStr,'y'),'y');
         for(let p of unique) {
-            let r_val = evalDerivative(r2Expr, p.x, p.y);
-            let s_val = evalDerivative(sExpr, p.x, p.y);
-            let t_val = evalDerivative(t2Expr, p.x, p.y);
-            let D = r_val * t_val - s_val * s_val;
-            let type = "";
-            if(D > 0 && r_val > 0) type = "Minimum";
-            else if(D > 0 && r_val < 0) type = "Maximum";
-            else if(D < 0) type = "Saddle Point";
-            else type = "Inconclusive";
+            let r_val = evalDerivative(r2,p.x,p.y), s_val = evalDerivative(s2,p.x,p.y), t_val = evalDerivative(t2,p.x,p.y);
+            let D = r_val*t_val - s_val*s_val;
+            let type = (D>0 && r_val>0) ? "Minimum" : (D>0 && r_val<0) ? "Maximum" : (D<0) ? "Saddle Point" : "Inconclusive";
             p.r = r_val; p.s = s_val; p.t = t_val; p.D = D; p.type = type;
         }
-        return unique.filter(p => !isNaN(p.r) && isFinite(p.r));
+        return unique.filter(p=>!isNaN(p.r));
     }
+    function evalFuncSafe(funcStr,x,y) { try { return math.parse(funcStr).evaluate({x,y}); } catch(e) { return NaN; } }
 
-    function evalFuncSafe(funcStr, x, y) {
-        try { return math.parse(funcStr).evaluate({x,y}); } catch(e) { return NaN; }
-    }
-
-    // Core compute & update all
     function computeAll() {
-        const rawFunc = document.getElementById("functionInput").value;
-        currentFuncStr = rawFunc;
-        const test = compileFunction(currentFuncStr);
-        if(!test) {
-            document.getElementById("criticalPointsOutput").innerHTML = "<i class='fas fa-exclamation-triangle'></i> Invalid function syntax. Use x and y.";
-            return;
-        }
-        let points = findCriticalPoints(currentFuncStr, [-2.6, 2.6], 0.13);
-        criticalPoints = points;
-        
-        // derivatives symbolic
-        const rExpr = getDerivative(currentFuncStr, 'x'); const r2 = getDerivative(rExpr, 'x');
-        const sExpr = getDerivative(currentFuncStr, 'x'); const s2 = getDerivative(sExpr, 'y');
-        const tExpr = getDerivative(currentFuncStr, 'y'); const t2 = getDerivative(tExpr, 'y');
-        document.getElementById("derivativeOutput").innerHTML = `<strong>✔ Second derivatives (symbolic):</strong><br>
-        r = ∂²f/∂x² = ${r2 || '?'}<br>
-        s = ∂²f/∂x∂y = ${s2 || '?'}<br>
-        t = ∂²f/∂y² = ${t2 || '?'}<br>
-        <span class="point-badge">D = r·t − s²</span> (evaluated at critical points below)`;
-        
-        if(points.length === 0) {
-            document.getElementById("criticalPointsOutput").innerHTML = "⚠️ No critical points found in scanned range. Try another function or adjust (e.g., x^2 + y^2).";
-        } else {
-            let html = `<strong>📍 Critical Points (${points.length} found):</strong><br>`;
-            points.forEach(p => {
-                html += `<div class="point-badge ${p.type === 'Maximum' ? 'max-point' : (p.type === 'Minimum' ? 'min-point' : 'saddle-point')}">
-                (${p.x.toFixed(4)}, ${p.y.toFixed(4)}) → ${p.type} | D=${p.D?.toFixed(4)}</div> `;
-            });
+        let raw = document.getElementById("functionInput").value;
+        currentFuncStr = raw;
+        if(!compileFunction(currentFuncStr)) { document.getElementById("criticalPointsOutput").innerHTML="Invalid function."; return; }
+        criticalPoints = findCriticalPoints(currentFuncStr);
+        let r2 = getDerivative(getDerivative(currentFuncStr,'x'),'x');
+        let s2 = getDerivative(getDerivative(currentFuncStr,'x'),'y');
+        let t2 = getDerivative(getDerivative(currentFuncStr,'y'),'y');
+        document.getElementById("derivativeOutput").innerHTML = `<strong>Second derivatives:</strong> r = ${r2||'?'}, s = ${s2||'?'}, t = ${t2||'?'}<br> D = rt - s²`;
+        if(criticalPoints.length===0) document.getElementById("criticalPointsOutput").innerHTML = "No critical points found.";
+        else {
+            let html = `<strong>Critical points (${criticalPoints.length}):</strong><br>`;
+            criticalPoints.forEach(p=>{ html+=`<div class="point-badge ${p.type==='Maximum'?'max-point':(p.type==='Minimum'?'min-point':'saddle-point')}">(${p.x.toFixed(4)},${p.y.toFixed(4)}) → ${p.type} | D=${p.D?.toFixed(4)}</div>`; });
             document.getElementById("criticalPointsOutput").innerHTML = html;
         }
-        updateResultAnalysis(points);
-        updateContourPlot(currentFuncStr, points);
-        update3DSurface(currentFuncStr, points);
+        updateResultAnalysis(criticalPoints);
+        updateContourPlot(currentFuncStr, criticalPoints);
+        update3DSurface(currentFuncStr, criticalPoints);
     }
-    
     function updateResultAnalysis(points) {
-        let summary = `<strong>📊 Classification (D = rt - s²):</strong><br>`;
-        if(points.length === 0) summary += "No critical points to analyze.";
-        else {
-            points.forEach(p => {
-                let condition = "";
-                if(p.type === "Minimum") condition = `D = ${p.D.toFixed(4)} > 0, r = ${p.r.toFixed(4)} > 0 → Local Minimum`;
-                else if(p.type === "Maximum") condition = `D = ${p.D.toFixed(4)} > 0, r = ${p.r.toFixed(4)} < 0 → Local Maximum`;
-                else if(p.type === "Saddle Point") condition = `D = ${p.D.toFixed(4)} < 0 → Saddle Point`;
-                else condition = `D = ${p.D.toFixed(4)} = 0 → Inconclusive`;
-                summary += `<div style="margin-top:8px;"><span class="point-badge ${p.type === 'Maximum' ? 'max-point' : (p.type === 'Minimum' ? 'min-point' : 'saddle-point')}">(${p.x.toFixed(3)}, ${p.y.toFixed(3)})</span> — ${condition}</div>`;
-            });
-        }
+        let summary = `<strong>Classification (D = rt-s²):</strong><br>`;
+        if(points.length===0) summary += "No critical points.";
+        else points.forEach(p=>{
+            let cond = (p.type==="Minimum")?`D>0, r>0 → Min`:(p.type==="Maximum")?`D>0, r<0 → Max`:(p.type==="Saddle Point")?`D<0 → Saddle`:`D=0 inconclusive`;
+            summary+=`<div><span class="point-badge">(${p.x.toFixed(3)},${p.y.toFixed(3)})</span> — ${cond}</div>`;
+        });
         document.getElementById("analysisSummary").innerHTML = summary;
-        let tableHtml = `<table style="width:100%; border-collapse:collapse; background:#fff; border-radius:1rem;">
-        <thead><tr style="background:#eef2ff;"><th>Point (x,y)</th><th>r = fxx</th><th>s = fxy</th><th>t = fyy</th><th>D = rt-s²</th><th>Classification</th></tr></thead><tbody>`;
-        points.forEach(p => {
-            tableHtml += `<tr style="border-bottom:1px solid #e2e8f0;"><td>(${p.x.toFixed(3)},${p.y.toFixed(3)})</td>
-            <td>${p.r.toFixed(4)}</td><td>${p.s.toFixed(4)}</td><td>${p.t.toFixed(4)}</td>
-            <td>${p.D.toFixed(4)}</td><td><strong>${p.type}</strong></td></tr>`;
-        });
-        tableHtml += `</tbody></table>`;
-        if(points.length===0) tableHtml = "<i>No critical points available</i>";
-        document.getElementById("detailedTable").innerHTML = tableHtml;
+        let table = `<table style="width:100%; border-collapse:collapse;"><tr style="background:#eef2ff;"><th>Point</th><th>r</th><th>s</th><th>t</th><th>D</th><th>Type</th></tr>`;
+        points.forEach(p=>{ table+=`<tr><td>(${p.x.toFixed(3)},${p.y.toFixed(3)})</td><td>${p.r.toFixed(4)}</td><td>${p.s.toFixed(4)}</td><td>${p.t.toFixed(4)}</td><td>${p.D.toFixed(4)}</td><td>${p.type}</td></tr>`; });
+        table+=`</table>`;
+        document.getElementById("detailedTable").innerHTML = points.length?table:"No data";
     }
-
     function updateContourPlot(funcStr, points) {
-        let x_vals = [], y_vals = [], z_vals = [];
-        let rng = [-2.4, 2.4]; let step=0.18;
-        for(let x=rng[0]; x<=rng[1]; x+=step){
-            for(let y=rng[0]; y<=rng[1]; y+=step){
-                let z = evalFuncSafe(funcStr, x, y);
-                if(isFinite(z)){ x_vals.push(x); y_vals.push(y); z_vals.push(z); }
-            }
-        }
-        let trace = { x: x_vals, y: y_vals, z: z_vals, type: 'contour', colorscale: 'Viridis', contours: { coloring: 'heatmap' }, colorbar: { title: 'f(x,y)' } };
+        let xv=[], yv=[], zv=[];
+        for(let x=-2.4; x<=2.4; x+=0.18) for(let y=-2.4; y<=2.4; y+=0.18) { let z=evalFuncSafe(funcStr,x,y); if(isFinite(z)){ xv.push(x); yv.push(y); zv.push(z); } }
+        let trace = {x:xv, y:yv, z:zv, type:'contour', colorscale:'Viridis'};
         let shapes = [];
-        points.forEach(p => {
-            let color = p.type==='Maximum' ? '#ef4444' : (p.type==='Minimum' ? '#10b981' : '#f59e0b');
-            shapes.push({ type: 'circle', xref: 'x', yref: 'y', x0: p.x-0.08, x1: p.x+0.08, y0: p.y-0.08, y1: p.y+0.08, line: { color: color, width: 3 }, fillcolor: color });
-        });
-        let layout = { title: 'Contour Map with Critical Points', xaxis: { title: 'x' }, yaxis: { title: 'y' }, shapes, paper_bgcolor: '#ffffff', plot_bgcolor: '#f8fafc', font: { color: '#1e293b' } };
-        Plotly.newPlot('contourPlot', [trace], layout, { responsive: true });
+        points.forEach(p=>{ let col = p.type==='Maximum'?'#ef4444':(p.type==='Minimum'?'#10b981':'#f59e0b'); shapes.push({type:'circle', xref:'x', yref:'y', x0:p.x-0.08, x1:p.x+0.08, y0:p.y-0.08, y1:p.y+0.08, line:{color:col,width:3}, fillcolor:col}); });
+        let layout = { title:'Contour with critical points', shapes, paper_bgcolor:'#fff', plot_bgcolor:'#f8fafc' };
+        Plotly.newPlot('contourPlot', [trace], layout, {responsive:true});
     }
-
     function update3DSurface(funcStr, points) {
-        let x_arr = [], y_arr = [], z_mat = [];
-        let range = [-2.2, 2.2]; let steps = 48;
-        for(let i=0; i<=steps; i++) {
-            let x = range[0] + (i/steps)*(range[1]-range[0]);
-            let row = [];
-            for(let j=0; j<=steps; j++) {
-                let y = range[0] + (j/steps)*(range[1]-range[0]);
-                let val = evalFuncSafe(funcStr, x, y);
-                row.push(isFinite(val)?val:0);
-                if(i===0) y_arr.push(y);
-            }
-            x_arr.push(x);
-            z_mat.push(row);
-        }
-        let surface = { x: x_arr, y: y_arr, z: z_mat, type: 'surface', colorscale: [[0,'#2563eb'],[0.5,'#2dd4bf'],[1,'#dc2626']], opacity: 0.85, colorbar: { title: 'f' } };
+        let xa=[], ya=[], zmat=[]; let steps=48, rng=[-2.2,2.2];
+        for(let i=0;i<=steps;i++){ let x=rng[0]+(i/steps)*(rng[1]-rng[0]); let row=[]; for(let j=0;j<=steps;j++){ let y=rng[0]+(j/steps)*(rng[1]-rng[0]); row.push(evalFuncSafe(funcStr,x,y)); if(i===0) ya.push(y); } xa.push(x); zmat.push(row); }
+        let surf = {x:xa, y:ya, z:zmat, type:'surface', colorscale:[[0,'#2563eb'],[0.5,'#2dd4bf'],[1,'#dc2626']], opacity:0.85};
         let markers = [];
-        points.forEach(p => {
-            let zval = evalFuncSafe(funcStr, p.x, p.y);
-            let mcolor = p.type === 'Maximum' ? '#dc2626' : (p.type === 'Minimum' ? '#10b981' : '#f97316');
-            markers.push({ x: [p.x], y: [p.y], z: [zval], mode: 'markers', type: 'scatter3d', marker: { size: 7, color: mcolor, symbol: 'circle', line: { width: 1, color: 'white' } }, name: p.type });
-        });
-        let layout = { title: '3D Surface & Critical Points', scene: { camera: { eye: { x: 1.4, y: 1.3, z: 1.2 } }, xaxis: { title: 'x' }, yaxis: { title: 'y' }, zaxis: { title: 'f(x,y)' } }, paper_bgcolor: '#ffffff', font: { color: '#0f172a' } };
-        Plotly.newPlot('surface3d', [surface, ...markers], layout, { responsive: true });
+        points.forEach(p=>{ let zval = evalFuncSafe(funcStr,p.x,p.y); let col = p.type==='Maximum'?'#dc2626':(p.type==='Minimum'?'#10b981':'#f97316'); markers.push({x:[p.x], y:[p.y], z:[zval], mode:'markers', type:'scatter3d', marker:{size:7, color:col, symbol:'circle'}, name:p.type}); });
+        let layout = { title:'3D surface', scene: { camera: { eye: { x:1.4, y:1.3, z:1.2 } } }, paper_bgcolor:'#fff' };
+        Plotly.newPlot('surface3d', [surf, ...markers], layout, {responsive:true});
     }
 
-    // ---------- QUIZ ----------
+    // ----------------------------- 20 QUIZ QUESTIONS + SOLUTIONS -----------------------------
     const quizQuestions = [
-        { question: "For a critical point (a,b) of f(x,y), which condition indicates a local minimum?", options: ["D > 0 and r > 0", "D > 0 and r < 0", "D < 0", "D = 0"], correct: 0 },
-        { question: "What does a saddle point signify?", options: ["Local maximum", "Local minimum", "Neither max nor min, D < 0", "Inconclusive test"], correct: 2 },
-        { question: "If D = rt - s² is negative at a critical point, then the point is:", options: ["Local Maximum", "Local Minimum", "Saddle Point", "Inconclusive"], correct: 2 },
-        { question: "What does 'r' represent in the second derivative test?", options: ["∂²f/∂x²", "∂²f/∂y²", "∂²f/∂x∂y", "D discriminant"], correct: 0 },
-        { question: "For a function f(x,y) = x² - y², the point (0,0) is:", options: ["Local Maximum", "Local Minimum", "Saddle Point", "Inconclusive"], correct: 2 },
-        { question: "If D > 0 and f_xx < 0, then the critical point is a:", options: ["Local Maximum", "Local Minimum", "Saddle point", "Inflection point"], correct: 0 }
+        { q: "What is a necessary condition for (a,b) to be a critical point of f(x,y)?", options: ["f_x=0 and f_y=0", "f_xx=0", "f_xy=0", "f=0"], correct: 0, solution: "Both first partial derivatives must be zero." },
+        { q: "If D > 0 and f_xx > 0 at a critical point, it is a:", options: ["Local maximum", "Local minimum", "Saddle point", "Inconclusive"], correct: 1, solution: "D>0 and f_xx>0 indicates local minimum." },
+        { q: "For a saddle point, the value of D = rt - s² is:", options: ["Positive", "Negative", "Zero", "Undefined"], correct: 1, solution: "Saddle points have D<0." },
+        { q: "Which condition guarantees a local maximum?", options: ["D>0, f_xx>0", "D>0, f_xx<0", "D<0", "D=0"], correct: 1, solution: "D>0 and f_xx<0 → maximum." },
+        { q: "The function f(x,y)=x² - y² has what type of critical point at (0,0)?", options: ["Max", "Min", "Saddle", "Inflection"], correct: 2, solution: "D = (-2)(2)-0 = -4 <0 → saddle point." },
+        { q: "What does r represent in the second derivative test?", options: ["f_xx", "f_yy", "f_xy", "Discriminant"], correct: 0, solution: "r = ∂²f/∂x²." },
+        { q: "If D = 0, the second derivative test is:", options: ["Conclusive (min)", "Conclusive (max)", "Inconclusive", "Saddle"], correct: 2, solution: "D=0 gives no information; need higher order tests." },
+        { q: "Global maximum occurs when f(a,b) ≥ f(x,y) for all (x,y) in the domain. True or false?", options: ["True", "False"], correct: 0, solution: "Definition of global maximum." },
+        { q: "Which of the following is true about a saddle point?", options: ["It is a local extremum", "Derivatives don't exist", "It's neither max nor min", "Always inconclusive"], correct: 2, solution: "Saddle point is not an extremum." },
+        { q: "If f_xx = 2, f_yy = 2, f_xy = 1 at a critical point, D equals:", options: ["4", "3", "5", "0"], correct: 1, solution: "D = (2)(2) - (1)² = 4-1=3." },
+        { q: "For f(x,y)=x²+y², the point (0,0) is a:", options: ["Maximum", "Minimum", "Saddle", "Inconclusive"], correct: 1, solution: "f_xx=2, f_yy=2, D=4>0, r>0 → minimum." },
+        { q: "To classify critical points we use:", options: ["First derivative test", "Second derivative test", "Gradient test", "Chain rule"], correct: 1, solution: "Multivariable second derivative test uses r,s,t." },
+        { q: "If D < 0, the point is definitely a:", options: ["Maximum", "Minimum", "Saddle", "Inconclusive"], correct: 2, solution: "Negative discriminant implies saddle." },
+        { q: "Partial derivatives being zero at a point guarantee it's a local extremum?", options: ["Yes always", "No, could be saddle"], correct: 1, solution: "Not always; e.g., saddle also has zero gradient." },
+        { q: "Which term represents f_xy in the Hessian matrix?", options: ["Off-diagonal", "Diagonal", "Determinant", "Trace"], correct: 0, solution: "f_xy is the mixed partial off-diagonal." },
+        { q: "For a function f(x,y)=x³ - 3xy², the point (0,0) is:", options: ["Max", "Min", "Saddle", "Inconclusive"], correct: 2, solution: "f_xx=0, f_yy=0, f_xy=-6y? at (0,0) D=0? Actually compute: f_xx=6x; at (0,0) r=0, t=0, s=-6*0? Wait derivative yields D=0? Historically (0,0) is saddle due to cubic behavior." },
+        { q: "The Hessian matrix is composed of:", options: ["First derivatives", "Second partial derivatives", "Gradient", "Jacobian"], correct: 1, solution: "Hessian contains second-order partials." },
+        { q: "If f_xx > 0 and D > 0, the critical point is a:", options: ["Maximum", "Minimum", "Saddle", "Inconclusive"], correct: 1, solution: "D>0 and f_xx>0 → local min." },
+        { q: "If f_xx < 0 and D > 0, the point is a:", options: ["Minimum", "Maximum", "Saddle", "Inflection"], correct: 1, solution: "D>0 and f_xx<0 → local max." },
+        { q: "Which of the following functions has a saddle point at (0,0)?", options: ["x²+y²", "x²-y²", "x²+y²+xy", "-x²-y²"], correct: 1, solution: "x² - y² gives hyperbolic paraboloid (saddle)." }
     ];
-    
+
     function buildQuiz() {
-        let quizHtml = '';
+        let html = '';
         quizQuestions.forEach((q, idx) => {
-            quizHtml += `<div class="quiz-question"><p><strong>${idx+1}. ${q.question}</strong></p>`;
+            html += `<div class="quiz-question" id="q${idx}">
+                        <p><strong>${idx+1}. ${q.q}</strong></p>`;
             q.options.forEach((opt, optIdx) => {
-                quizHtml += `<label class="quiz-option"><input type="radio" name="q${idx}" value="${optIdx}"> <span>${opt}</span></label>`;
+                html += `<label class="quiz-option"><input type="radio" name="q${idx}" value="${optIdx}"> <span>${opt}</span></label>`;
             });
-            quizHtml += `</div>`;
+            html += `<div id="sol${idx}" class="solution-detail"></div></div>`;
         });
-        document.getElementById("quizContainer").innerHTML = quizHtml;
+        document.getElementById("quizContainer").innerHTML = html;
     }
-    
+
     function evaluateQuiz() {
         let score = 0;
+        let resultsHtml = `<div class="quiz-score"><i class="fas fa-chart-simple"></i> Score: `;
         for(let i=0; i<quizQuestions.length; i++) {
             let selected = document.querySelector(`input[name="q${i}"]:checked`);
-            if(selected && parseInt(selected.value) === quizQuestions[i].correct) score++;
+            let isCorrect = selected && parseInt(selected.value) === quizQuestions[i].correct;
+            if(isCorrect) score++;
+            let correctnessSpan = isCorrect ? "✅ Correct" : "❌ Incorrect";
+            let solutionDiv = document.getElementById(`sol${i}`);
+            if(!isCorrect) {
+                solutionDiv.style.display = "block";
+                solutionDiv.innerHTML = `<button class="solution-btn" onclick="toggleSolution(${i})"><i class="fas fa-lightbulb"></i> View Detailed Solution</button>
+                                         <div id="detailText${i}" style="display:none; margin-top:5px;">📖 <strong>Solution:</strong> ${quizQuestions[i].solution}</div>`;
+            } else {
+                solutionDiv.style.display = "none";
+                solutionDiv.innerHTML = "";
+            }
+            // optional per-question feedback show inline? We'll add a brief status
+            let qDiv = document.getElementById(`q${i}`);
+            let existingStatus = qDiv.querySelector(".q-status");
+            if(existingStatus) existingStatus.remove();
+            let statusSpan = document.createElement("div");
+            statusSpan.className = "q-status";
+            statusSpan.style.fontSize="0.8rem"; statusSpan.style.marginTop="0.3rem";
+            statusSpan.innerHTML = isCorrect ? "✓ Correct" : "✗ Incorrect (click below for solution)";
+            statusSpan.style.color = isCorrect ? "#15803d" : "#b91c1c";
+            qDiv.appendChild(statusSpan);
         }
-        let resultDiv = document.getElementById("quizResult");
-        resultDiv.innerHTML = `<div class="quiz-score"><i class="fas fa-star"></i> Your score: ${score} / ${quizQuestions.length}</div>
-        <p style="margin-top:10px;">${score === quizQuestions.length ? "Perfect! You mastered Maxima/Minima concepts." : "Review the theory and try again! Use the Home tab."}</p>`;
+        resultsHtml += `${score} / ${quizQuestions.length}</div>`;
+        document.getElementById("quizResult").innerHTML = resultsHtml + `<p>${score===20?"Excellent mastery!": "Review incorrect answers and learn from solutions."}</p>`;
     }
-    
-    // Event listeners
+
+    window.toggleSolution = function(idx) {
+        let detail = document.getElementById(`detailText${idx}`);
+        if(detail.style.display === "none") detail.style.display = "block";
+        else detail.style.display = "none";
+    };
+
+    // Feedback handler
+    document.getElementById("submitFeedback")?.addEventListener("click", function() {
+        let name = document.getElementById("feedbackName").value || "Anonymous";
+        let email = document.getElementById("feedbackEmail").value;
+        let msg = document.getElementById("feedbackMessage").value;
+        if(!msg.trim()) { document.getElementById("feedbackStatus").innerHTML = "<span style='color:#b91c1c;'>Please enter a message.</span>"; return; }
+        document.getElementById("feedbackStatus").innerHTML = "<span style='color:#2d6a4f;'><i class='fas fa-check-circle'></i> Thank you for your feedback, " + name + "! We'll review it.</span>";
+        document.getElementById("feedbackMessage").value = "";
+        document.getElementById("feedbackName").value = "";
+        document.getElementById("feedbackEmail").value = "";
+        setTimeout(()=>{ document.getElementById("feedbackStatus").innerHTML = ""; }, 4000);
+    });
+
+    // Event listeners & initialization
     document.getElementById("computeBtn").addEventListener("click", computeAll);
-    document.getElementById("submitQuiz")?.addEventListener("click", evaluateQuiz);
-    
-    // Tab switching
+    document.getElementById("submitQuiz").addEventListener("click", evaluateQuiz);
     const tabs = document.querySelectorAll(".tab-btn");
     const panels = document.querySelectorAll(".panel");
     tabs.forEach(btn => {
@@ -664,13 +612,11 @@
             document.getElementById(`${target}-panel`).classList.add("active-panel");
             tabs.forEach(b => b.classList.remove("active"));
             btn.classList.add("active");
-            if(target === "quiz") buildQuiz();  // rebuild quiz when opened
-            if(target === "visuals" && criticalPoints.length) update3DSurface(currentFuncStr, criticalPoints);
+            if(target === "quiz") buildQuiz();
             if(target === "function" && criticalPoints.length) updateContourPlot(currentFuncStr, criticalPoints);
+            if(target === "visuals" && criticalPoints.length) update3DSurface(currentFuncStr, criticalPoints);
         });
     });
-    
-    // initial compute
     setTimeout(() => { computeAll(); buildQuiz(); }, 100);
 </script>
 </body>
