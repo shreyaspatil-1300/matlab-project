@@ -64,7 +64,6 @@
             height: 55px;
             width: auto;
             filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
-            object-fit: contain;
         }
         .college-title h1 {
             font-size: 1.5rem;
@@ -350,11 +349,9 @@
 <div class="container">
     <div class="college-header">
         <div class="college-title">
-            <!-- PCCOE Logo using provided base64 image -->
-            <img> src="http://www.pccoepune.com/images/pccoe-logo-new.webp"                 alt="PCCOE Logo"
-            onerror="this.onerror=null; this.style.display='none'; this.nextSibling.style.display='inline-block';"
-                 style="height:55px;">
-            <span style="display:none; font-size:2rem; line-height:1;">🏛️</span>
+            <!-- PCCOE Logo -->
+            <img src="http://www.pccoepune.com/images/pccoe-logo-new.webp" alt="PCCOE Logo" 
+                 onerror="this.src='http://www.pccoepune.com/images/pccoe-logo-new.webp'">
             <h1>Pimpri Chinchwad College of Engineering</h1>
         </div>
         <div class="tagline">
@@ -404,7 +401,7 @@
                 <h3>5. First Derivative Test</h3>
                 <p><strong>Procedure:</strong> Find f'(x), solve f'(x)=0, check sign of f'(x) on both sides.</p>
                 <table>
-                    <tr><th>Sign change of f'(x)</th><th>Nature</th><tr>
+                    <tr><th>Sign change of f'(x)</th><th>Nature</th></tr>
                     <tr><td>+ → -</td><td>Local Maximum</td></tr>
                     <tr><td>- → +</td><td>Local Minimum</td></tr>
                     <tr><td>No change</td><td>Neither</td></tr>
